@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+body{
+  background-color: rgb(255, 254, 238);
+}
+
+.navbar{
+  display: flex;
+  padding: 50px 70px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sideNav{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 8;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  text-align: center;
+  padding: 20px 0;
+  /* margin-right: 50px; */
+}
+
+.sideNav button{
+  padding: 3px 16px;
+  display: grid;
+  gap: 10px;
+  padding: 10px 0;
+  color: #630470;
+  border-top: 1px solid rgb(177, 177, 177);
+}
+
+.sideNav button:hover{
+  background-color: #e4e4e4;
+}
+
+.sideNav button i{
+  font-size: 20px;
+}
+
+.sideNav img{
+  margin: 30px auto;
+  width: 70%;
+}
+
+.fa-xmark, .fa-bars{
+  color: #fff;
+  cursor: pointer;
+  background-color: #630470;
+  padding: 16px 10px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 6;
+}
+
+.fa-search{
+  background-color: #630470;
+  color: #fff;
+  border-top: 2px solid #630470;
+  border-left: 2px solid #630470;
+  border-bottom: 2px solid #630470;
+  padding: 5px 10px;
+  border-radius: 20px 0 0 20px;
+  border-right: none;
+}
+
+.fa-user, .fa-envelope, .fa-phone, .fa-home{
+  background-color: #630470;
+  color: #fff;
+  padding: 9px 10px;
+  height: 35px;
+  border-right: none;
+}
+
+.search, .formGroup{
+  display: flex;
+  align-items: center;
+}
+
+.search input{
+  background-color: transparent;
+  width: 300px;
+  border-top: 2px solid #630470;
+  border-right: 2px solid #630470;
+  border-bottom: 2px solid #630470;
+  height: 30px;
+  padding: 5px 10px;
+  border-radius: 0 20px 20px 0;
+  border-left: none;
+}
+
+.search input:focus{
+  outline: none;
+}
+
+.active{
+  border-right: 5px solid #630470;
+}
+
+.adminPassModal{
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background-color: #e4e4e4;
+  padding: 20px;
+  border-radius: 10px;
+  height: 220px;
+  width: 320px;
+  z-index: 10;
+}
+
+.addStudentModal{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e4e4e4;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  z-index: 10;
+  padding-bottom: 80px;
+  padding-top: 40px;
+}
+
+.addStudentModal input[type="submit"]{
+  border: none;
+}
+
+#modalClose{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+
+.adminPassModal div{
+  margin-top: 40px;
+}
+
+.addStudentModal div{
+  margin-top: 20px;
+}
+
+/* , .addStudentModal div input */
+
+.adminPassModal div input{
+  width: 255px;
+  height: 35px;
+  background-color: transparent;
+  margin-top: 10px;
+  border: 2px solid #630470;
+  outline: none;
+  padding-left: 5px;
+}
+
+.addStudentModal div input{
+  width: 255px;
+  height: 35px;
+  background-color: transparent;
+  border: 2px solid #630470;
+  outline: none;
+  padding-left: 5px;
+}
+
+.submitBtn{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: #630470;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+
+.modalWrapper{
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.navWrapper{
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+button{
+  all: unset;
+  cursor: pointer;
+}
