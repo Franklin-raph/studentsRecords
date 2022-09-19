@@ -19,7 +19,6 @@ const AdminPasscomponent = ({ setAdminPassModal }) => {
             },3500)
         }else{
             setShowAddStudentComponent(true)
-            // setAdminPassModal(false)
         }
     }
 
@@ -31,7 +30,7 @@ const AdminPasscomponent = ({ setAdminPassModal }) => {
                 {error && <p style={{textAlign:'center', color:'red', fontWeight:'500'}}>{error}</p> }
                 <div style={{display:'grid', gap:'30px', placeItems:'center',}}>
                     <i className="fa-solid fa-key fa-xl" style={{fontSize:'50px', color:'#757575'}}></i>
-                    <input type="password" id="" value={passCode} onChange={(e) => setPassCode(e.target.value)}/>
+                    <input type="password" id="" value={passCode} onChange={(e) => setPassCode(e.target.value)} placeholder="******"/>
                 </div>
                 <button className='submitBtn' onClick={handlePassCode}>Submit</button>
             </div>

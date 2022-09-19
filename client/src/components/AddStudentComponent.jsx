@@ -13,10 +13,21 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal }) 
         setShowAddStudentComponent(false)
         setAdminPassModal(false)
     }
+
+    function handleStudentFormSubmit(e){
+        e.preventDefault()
+        if(!name || !email || !phoneNumber || !address){
+            setError("Please Fill in all fields")
+            setTimeout(() => {
+                setError("")
+            },3500)
+        }
+    }
+
   return (
     <div>
         <div className="modalWrapper">
-            <div className='addStudentModal'>
+            <form className='addStudentModal' onSubmit={handleStudentFormSubmit}>
                 <i className="fa-solid fa-xmark fa-xl" onClick={() => handleModalClose()} id="modalClose"></i>
                 {error && <p style={{textAlign:'center', color:'red', fontWeight:'500'}}>{error}</p> }
                 <div style={{display:'grid', placeItems:'center',}}>
@@ -37,8 +48,8 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal }) 
                         <input type="text" id="" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Ikeja, Lagos Nigeria" />
                     </div>
                 </div>
-                <input type="submit" className='submitBtn' value="Submit"/>
-            </div>
+                <input type="submit" className='addStudentSubmitBtn' value="Submit"/>
+            </form>
         </div>
     </div>
   )
