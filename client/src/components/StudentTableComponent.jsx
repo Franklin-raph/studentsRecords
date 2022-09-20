@@ -1,6 +1,12 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteStudent, updateStudent } from '../features/studentSlice';
 
-const StudentTableComponent = () => {
+const StudentTableComponent = ({ students }) => {
+
+  const dispatch = useDispatch()
+  // const students = useSelector(state => state.students.value)
+
   return (
     <div className="container mt-5 table-responsive bg-glass shadow-4-strong rounded-6 px-0">
         <table className="table text-dark table-border table-hover">
@@ -14,34 +20,39 @@ const StudentTableComponent = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="text-dark">
+            {students.map(student =>{
+              return(
+            <tr className="text-dark"  key={student.id}>
               <td>
                 <div className="d-flex align-items-center">
                   <div className="ms-3">
-                    <p className="fw-bold mb-1">John Doe</p>
+                    <p className="fw-bold mb-1">{student.fName}</p>
                   </div>
                 </div>
               </td>
               <td>
-                <p className="text-muted">johndoe@gmail.com</p>
+                <p className="text-muted">{student.email}</p>
               </td>
               <td>
-                <p>080-000-000-00</p>
+                <p>{student.phoneNumber}</p>
               </td>
               <td>
-                Senior
+                {student.address}
               </td>
               <td>
                 <button type="button" className="btn btn-outline-warning btn-sm btn-rounded">
                   Edit
                 </button>
-                <button type="button" className="btn btn-outline-danger btn-sm btn-rounded ms-2">
+                <button onClick={() => dispatch(deleteStudent({id: student.id}))} type="button" className="btn btn-outline-danger btn-sm btn-rounded ms-2">
                   Delete
                 </button>
               </td>
             </tr>
+              )
+            })}
+            
 
-            <tr className="text-dark">
+            {/* <tr className="text-dark">
               <td>
                 <div className="d-flex align-items-center">
                   <div className="ms-3">
@@ -92,7 +103,7 @@ const StudentTableComponent = () => {
                   Delete
                 </button>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
