@@ -1,11 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-// import { deleteStudent, updateStudent } from '../features/studentSlice';
+import { deleteStudentAsync } from '../features/studentSlice';
 
 const StudentTableComponent = ({ students }) => {
 
   const dispatch = useDispatch()
-  // const students = useSelector(state => state.students.value)
 
   return (
     <>
@@ -17,13 +16,13 @@ const StudentTableComponent = ({ students }) => {
               <th scope="col">Email</th>
               <th scope="col">Phone Number</th>
               <th scope="col">Address</th>
-              {/* <th scope="col">Actions</th> */}
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
             {students && students.map(student =>{
               return(
-            <tr className="text-dark"  key={student.id}>
+            <tr className="text-dark" key={student._id}>
               <td>
                 <div className="d-flex align-items-center">
                   <div className="ms-3 d-flex gap-3">
@@ -41,14 +40,14 @@ const StudentTableComponent = ({ students }) => {
               <td>
                 {student.address}
               </td>
-              {/* <td>
-                <button type="button" className="btn btn-outline-warning btn-sm btn-rounded">
+              <td>
+                {/* <button type="button" className="btn btn-outline-warning btn-sm btn-rounded">
                   Edit
-                </button>
-                <button onClick={() => dispatch(deleteStudent({id: student.id}))} type="button" className="btn btn-outline-danger btn-sm btn-rounded ms-2">
+                </button> */}
+                <button onClick={() => dispatch(deleteStudentAsync(student._id))} type="button" className="btn btn-outline-danger btn-sm btn-rounded ms-2">
                   Delete
                 </button>
-              </td> */}
+              </td>
             </tr>
               )
             })}

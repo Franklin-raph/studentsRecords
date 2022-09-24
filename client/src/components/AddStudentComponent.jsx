@@ -18,7 +18,7 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal, se
     function handleModalClose(){
         setShowAddStudentComponent(false)
         setAdminPassModal(false)
-        setIsLeftNavOpen(false)
+        // setIsLeftNavOpen(false)
     }
 
     function handleStudentFormSubmit(e){

@@ -32,10 +32,13 @@ export const addStudentAsync = createAsyncThunk (
 export const deleteStudentAsync = createAsyncThunk (
     'records/deleteStudentAsync',
     async(payload) => {
+        console.log(payload)
         const response = await fetch(`http://localhost:5000/api/v1/student/${payload}`, {
-            method: 'DELETE',
-            
+            method: 'DELETE'
         })
+        const data = await response.json()
+        console.log(data)
+        return { data }
     }
 )
 
@@ -65,6 +68,9 @@ export const studentSlice = createSlice({
         },
         [addStudentAsync.fulfilled]: (state, action) => {
             state.push(action.payload.data)
+        },
+        [deleteStudentAsync.fulfilled]: (state, action) => {
+            return state.filter((student) => student._id !== action.payload.data.id)
         }
     }
 })
