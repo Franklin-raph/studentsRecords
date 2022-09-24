@@ -8,6 +8,45 @@
     <title>Document</title>
 </head>
 <body>
-    <i class="ri-home-5-fill" style="font-size: 200px; color:red;"></i>
+    <div class="buttons">
+        <a href="#a">a</a>
+        <a href="#b">b</a>
+        <a href="#c">c</a>
+    </div>
+
+    <div class="tabs">
+        <div id="a">
+            <h4>Tab A</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo placeat est vitae ad quis reprehenderit nulla! Eveniet accusamus, praesentium odio dolores eos quos alias eaque id sunt? Repudiandae mollitia veritatis commodi quibusdam, eligendi nostrum perspiciatis aspernatur nobis corrupti quidem obcaecati?</p>
+        </div>
+        <div id="b">
+            <h4>Tab B</h4>
+            <p>Quo placeat est vitae ad quis reprehenderit nulla! Eveniet accusamus, praesentium odio dolores eos quos alias eaque id sunt? Repudiandae mollitia veritatis commodi quibusdam, eligendi nostrum perspiciatis aspernatur nobis corrupti quidem obcaecati?</p>
+        </div>
+        <div id="c">
+            <h4>Tab C</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium odio dolores eos quos alias eaque id sunt? Repudiandae mollitia veritatis commodi quibusdam, eligendi nostrum perspiciatis aspernatur nobis corrupti quidem obcaecati?</p>
+        </div>
+    </div>
+
+    <style>
+        .buttons{
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tabs div{
+            display: none;
+        }
+
+        .tabs div:target{
+            display: block;
+        }
+
+        .tabs div:first-child{
+            display: block;
+        }
+    </style>
 </body>
 </html>

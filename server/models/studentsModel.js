@@ -5,7 +5,11 @@ const StudentSchema = mongoose.Schema({
         type: "String",
         required: [true, "Please enter an email"],
     },
-    name: {
+    fName: {
+        type: "String",
+        required: [true, "Please enter a name"],
+    },
+    lName: {
         type: "String",
         required: [true, "Please enter a name"],
     },

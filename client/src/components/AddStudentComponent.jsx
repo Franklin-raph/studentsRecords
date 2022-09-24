@@ -1,34 +1,35 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { addStudent} from '../features/studentSlice';
+import { addStudentAsync } from '../features/studentSlice'
 
 
-const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal }) => {
+const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal, setIsLeftNavOpen }) => {
 
     const dispatch = useDispatch()
-    const students = useSelector(state => state.students.value)
+    // const students = useSelector(state => state.students.value)
 
     const [fName, setFName] = useState("")
     const [lName, setLName] = useState("")
     const [email, setEmail] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
+    const [phoneNum, setPhoneNum] = useState("")
     const [address, setAddress] = useState("")
     const [error, setError] = useState("")
 
     function handleModalClose(){
         setShowAddStudentComponent(false)
         setAdminPassModal(false)
+        setIsLeftNavOpen(false)
     }
 
     function handleStudentFormSubmit(e){
         e.preventDefault()
-        if(!fName || !email || !phoneNumber || !address || !lName){
+        if(!fName || !email || !phoneNum || !address || !lName){
             setError("Please Fill in all fields")
             setTimeout(() => {
                 setError("")
             },3500)
         }else{
-            dispatch(addStudent({id: Number(students.length) + 1, fName, email, phoneNumber, address, lName}))
+            dispatch(addStudentAsync({fName, email, phoneNum, address, lName}))
             handleModalClose()
         }
     }
@@ -54,7 +55,7 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal }) 
                     </div>
                     <div className="formGroup">
                         <i className="fa-solid fa-phone"></i>
-                        <input type="number" id="" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="080-000-000-000"/>
+                        <input type="number" id="" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} placeholder="080-000-000-000"/>
                     </div>
                     <div className="formGroup">
                         <i className="fa-solid fa-home"></i>

@@ -3,13 +3,13 @@ const StudentModel = require('../models/studentsModel');
 
 // Add Student
 const registerStudent = async (req, res) => {
-    const { name, address, phoneNum, email } = req.body;
-    if(!name || !address || !phoneNum || !email) return res.status(400).json({Msg: "Please fill in all fields"})
+    const { fName, lName, address, phoneNum, email } = req.body;
+    if(!fName || !lName || !address || !phoneNum || !email) return res.status(400).json({Msg: "Please fill in all fields"})
     try {
         const existingEmail = await StudentModel.findOne({email:email})
         if(existingEmail) return res.status(401).json({Msg: "Email already exists"})
 
-        const studentDetails = await StudentModel.create({name, address, phoneNum, email})
+        const studentDetails = await StudentModel.create({fName, lName, address, phoneNum, email})
         res.status(201).json( studentDetails )
     } catch (error) {
         res.status(500).json({Msg: error.message})

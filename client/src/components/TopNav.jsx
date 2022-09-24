@@ -1,12 +1,12 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import Leftnav from './Leftnav';
 
 const TopNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isLeftNavOpen, setIsLeftNavOpen] = useState(false);
 
   return (
     <>
-        {!isOpen ? null
+        {!isLeftNavOpen ? null
           :<Leftnav />
         }
         <div className="navbar">
@@ -14,9 +14,9 @@ const TopNav = () => {
             <div className="search">
               <i className="fa-solid fa-search"></i><input type="search" placeholder='Search...' id="" />
             </div>
-            {isOpen ? <i className="fa-solid fa-xmark fa-xl" onClick={() => setIsOpen(!isOpen)}></i>
+            {isLeftNavOpen ? <i className="fa-solid fa-xmark fa-xl" onClick={() => setIsLeftNavOpen(!isLeftNavOpen)}></i>
               :
-              <i className="fa-solid fa-bars fa-xl" onClick={() => setIsOpen(!isOpen)} id="navClose"></i>
+              <i className="fa-solid fa-bars fa-xl" onClick={() => setIsLeftNavOpen(!isLeftNavOpen)} id="navClose"></i>
             }
         </div>
     </>
