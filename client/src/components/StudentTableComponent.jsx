@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteStudentAsync } from '../features/studentSlice';
+import { deleteStudentAsync, getAStudentAsync } from '../features/studentSlice';
+import Options from './Options'
 
-const StudentTableComponent = ({ students }) => {
+const StudentTableComponent = ({ allStudents }) => {
 
   const dispatch = useDispatch()
+  const [openToggleOptions, setOpenToggleOptions] = useState(false)
+
+  const toggleAction = (id) => {
+    dispatch(getAStudentAsync(id))
+    setOpenToggleOptions(true)
+  }
 
   return (
     <>
@@ -20,9 +27,9 @@ const StudentTableComponent = ({ students }) => {
             </tr>
           </thead>
           <tbody>
-            {students && students.map(student =>{
+            {allStudents && allStudents.map(student =>{
               return(
-            <tr className="text-dark" key={student._id}>
+            <tr className="text-dark ttt" key={student._id}>
               <td>
                 <div className="d-flex align-items-center">
                   <div className="ms-3 d-flex gap-3">
@@ -44,9 +51,17 @@ const StudentTableComponent = ({ students }) => {
                 {/* <button type="button" className="btn btn-outline-warning btn-sm btn-rounded">
                   Edit
                 </button> */}
-                <button onClick={() => dispatch(deleteStudentAsync(student._id))} type="button" className="btn btn-outline-danger btn-sm btn-rounded ms-2">
+                {/* <button onClick={() => dispatch(deleteStudentAsync(student._id))} type="button" className="btn btn-outline-danger btn-sm btn-rounded ms-2">
                   Delete
-                </button>
+                </button> */}
+                <i className="fa-solid fa-sliders" onClick={() => toggleAction(student._id)}></i>
+                {/* {showActions ? 
+                  <div className="actions">
+                      <p>Edit</p>
+                      <div className="hr"></div>
+                      <p>Del</p>
+                  </div> : 
+                null } */}
               </td>
             </tr>
               )
@@ -54,6 +69,8 @@ const StudentTableComponent = ({ students }) => {
           </tbody>
         </table>
       </div>
+      {openToggleOptions && <Options setOpenToggleOptions={setOpenToggleOptions}/>}
+      {/* {openSingleStudentComponent && <SingleStudentComponent setOpenSingleStudentComponent={setOpenSingleStudentComponent}/>} */}
     </>
   )
 }

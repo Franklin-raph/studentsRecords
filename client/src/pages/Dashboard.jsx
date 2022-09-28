@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
 import StudentTableComponent from '../components/StudentTableComponent'
 import { useSelector, useDispatch } from 'react-redux'
-import { getStudentAsync } from '../features/studentSlice'
+import { getAllStudentAsync } from '../features/studentSlice'
 import { useEffect } from 'react'
 
 const Dashboard = () => {
 
   const dispatch = useDispatch();
 
-  const students = useSelector(state => state.students)
-
   useEffect(() => {
-    dispatch(getStudentAsync())
+    dispatch(getAllStudentAsync())
   },[])
+
+  const { allStudents } = useSelector((state) => state.students)
+  // console.log(allStudents)
+
   
     
   return (
     <div style={{position:'relative', marginTop:'6rem'}}>
-        <StudentTableComponent students={students}/>
+        {allStudents && <StudentTableComponent allStudents={allStudents}/> }
     </div>
   )
 }

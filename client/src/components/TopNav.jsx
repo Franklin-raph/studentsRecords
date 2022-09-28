@@ -10,7 +10,7 @@ const TopNav = () => {
           :<Leftnav />
         }
         <div className="navbar">
-            <h3>Technobs Digital Solutions</h3>
+            <h3 style={{fontSize:'16px'}}>Technobs Digital Solutions</h3>
             <div className="search">
               <i className="fa-solid fa-search"></i><input type="search" placeholder='Search...' id="" />
             </div>

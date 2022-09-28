@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import AddStudentComponent from './AddStudentComponent'
 
-const AdminPasscomponent = ({ setAdminPassModal }) => {
+const AdminPasscomponent = ({ setAdminPassComponentModal }) => {
     const [passCode, setPassCode] = useState("")
     const [error, setError] = useState("")
     const [showAddStudentComponent, setShowAddStudentComponent] = useState(false)
@@ -22,11 +22,15 @@ const AdminPasscomponent = ({ setAdminPassModal }) => {
         }
     }
 
+    function closeNavs(){
+        setAdminPassComponentModal(false)
+    }
+
   return (
     <>
         <div className="modalWrapper">
             <div className='adminPassModal'>
-                <i className="fa-solid fa-xmark fa-xl" onClick={() => setAdminPassModal(false)} id="modalClose"></i>
+                <i className="fa-solid fa-xmark fa-xl" onClick={() => closeNavs()} id="modalClose"></i>
                 {error && <p style={{textAlign:'center', color:'red', fontWeight:'500'}}>{error}</p> }
                 <div style={{display:'grid', gap:'30px', placeItems:'center',}}>
                     <i className="fa-solid fa-key fa-xl" style={{fontSize:'50px', color:'#757575'}}></i>
@@ -35,7 +39,10 @@ const AdminPasscomponent = ({ setAdminPassModal }) => {
                 <button className='submitBtn' onClick={handlePassCode}>Submit</button>
             </div>
         </div>
-        {showAddStudentComponent && <AddStudentComponent setShowAddStudentComponent={setShowAddStudentComponent} setAdminPassModal={setAdminPassModal}/>}
+        {
+            showAddStudentComponent && <AddStudentComponent setShowAddStudentComponent={setShowAddStudentComponent} 
+            setAdminPassComponentModal={setAdminPassComponentModal}/>
+        }
     </>
   )
 }

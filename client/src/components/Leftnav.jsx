@@ -5,12 +5,12 @@ import AdminPasscomponent from '../components/AdminPasscomponent'
 
 const Leftnav = () => {
 
-    const [adminPassModal, setAdminPassModal] = useState(false);
+    const [adminPassComponentModal, setAdminPassComponentModal] = useState(false);
 
   return (
     <>
-        {!adminPassModal ? null
-          :<AdminPasscomponent setAdminPassModal={setAdminPassModal}/>
+        {!adminPassComponentModal ? null
+          :<AdminPasscomponent setAdminPassComponentModal={setAdminPassComponentModal}/>
         }
         <div className="navWrapper">
             <div className='sideNav'>
@@ -19,7 +19,7 @@ const Leftnav = () => {
                     <i className="fa-solid fa-gauge-high"></i>
                     <p>Dashboard</p>
                 </button>
-                <button onClick={() => setAdminPassModal(true)}>
+                <button onClick={() => setAdminPassComponentModal(true)}>
                     <i className="fa-solid fa-user-plus"></i>
                     <p>Add Student</p>
                 </button>

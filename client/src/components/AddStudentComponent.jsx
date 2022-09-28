@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addStudentAsync } from '../features/studentSlice'
 
 
-const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal, setIsLeftNavOpen }) => {
+const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassComponentModal, setIsLeftNavOpen }) => {
 
     const dispatch = useDispatch()
-    // const students = useSelector(state => state.students.value)
 
     const [fName, setFName] = useState("")
     const [lName, setLName] = useState("")
@@ -17,7 +16,7 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassModal, se
 
     function handleModalClose(){
         setShowAddStudentComponent(false)
-        setAdminPassModal(false)
+        setAdminPassComponentModal(false)
         // setIsLeftNavOpen(false)
     }
 

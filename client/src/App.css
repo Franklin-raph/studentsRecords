@@ -118,11 +118,13 @@ body{
 
 .table{
   box-shadow: none !important;
+  
 }
 
 .tableContainer{
   margin-bottom: 12rem;
   box-shadow: 20px 20px 40px rgb(211, 211, 211) !important;
+  border: 1px solid #dddddd;
 }
 
 .adminPassModal{
@@ -237,6 +239,20 @@ body{
   position: absolute;
 }
 
+.singleStudentComponent{
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button{
   all: unset;
   cursor: pointer;
@@ -257,4 +273,69 @@ button{
 
 .footer p{
   margin: 3px;
+}
+
+.ttt{
+  user-select: none;
+  position: relative;
+  /* background-color: red; */
+}
+
+.actions{
+  position: absolute;
+  top: 28px;
+  right: 38px;
+  background-color: rgb(214, 214, 214);
+  border-radius: 7px;
+  padding: 5px 0;
+  width: 50px;
+  text-align: center;
+}
+
+.actions p{
+  cursor: pointer;
+}
+
+.edit{
+  background-color: #f8be00;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete{
+  background-color: #e7195a;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.optionsComponent{
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.optionsComponentModal{
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background-color: #e4e4e4;
+  padding: 20px 20px 100px;
+  border-radius: 10px;
+  height: 130px;
+  width: 200px;
+  z-index: 10;
 }
