@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteStudentAsync, getAStudentAsync } from '../features/studentSlice';
+import { getAStudentAsync } from '../features/studentSlice';
 import Options from './Options'
 
 const StudentTableComponent = ({ allStudents }) => {
@@ -29,7 +29,7 @@ const StudentTableComponent = ({ allStudents }) => {
           <tbody>
             {allStudents && allStudents.map(student =>{
               return(
-            <tr className="text-dark ttt" key={student._id}>
+            <tr className="text-dark" key={student._id}>
               <td>
                 <div className="d-flex align-items-center">
                   <div className="ms-3 d-flex gap-3">
@@ -47,21 +47,8 @@ const StudentTableComponent = ({ allStudents }) => {
               <td>
                 {student.address}
               </td>
-              <td>
-                {/* <button type="button" className="btn btn-outline-warning btn-sm btn-rounded">
-                  Edit
-                </button> */}
-                {/* <button onClick={() => dispatch(deleteStudentAsync(student._id))} type="button" className="btn btn-outline-danger btn-sm btn-rounded ms-2">
-                  Delete
-                </button> */}
-                <i className="fa-solid fa-sliders" onClick={() => toggleAction(student._id)}></i>
-                {/* {showActions ? 
-                  <div className="actions">
-                      <p>Edit</p>
-                      <div className="hr"></div>
-                      <p>Del</p>
-                  </div> : 
-                null } */}
+              <td style={{textAlign:'center', color:'#630470'}}>
+                <i className="fa-solid fa-sliders" style={{fontSize:'20px', cursor:'pointer'}} onClick={() => toggleAction(student._id)}></i>
               </td>
             </tr>
               )
@@ -70,7 +57,6 @@ const StudentTableComponent = ({ allStudents }) => {
         </table>
       </div>
       {openToggleOptions && <Options setOpenToggleOptions={setOpenToggleOptions}/>}
-      {/* {openSingleStudentComponent && <SingleStudentComponent setOpenSingleStudentComponent={setOpenSingleStudentComponent}/>} */}
     </>
   )
 }

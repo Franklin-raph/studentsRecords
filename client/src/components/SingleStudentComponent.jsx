@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateStudentAsync } from '../features/studentSlice'
 
 const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
 
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const { singleStudent } = useSelector((state) => state.students)
-    console.log(singleStudent)
+    const studentId = singleStudent._id
 
     const [fName, setFName] = useState(singleStudent.fName)
     const [lName, setLName] = useState(singleStudent.lName)
@@ -26,7 +27,7 @@ const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
                 setError("")
             },3500)
         }else{
-            dispatch(addStudentAsync({fName, email, phoneNum, address, lName}))
+            dispatch(updateStudentAsync({studentId, fName, email, phoneNum, address, lName}))
             handleModalClose()
         }
     }
@@ -58,7 +59,7 @@ const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
                     <input type="text" id="" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Ikeja, Lagos Nigeria" />
                 </div>
             </div>
-            <input type="submit" className='addStudentSubmitBtn' value="Submit"/>
+            <input type="submit" className='addStudentSubmitBtn' value="Update"/>
         </form>
     </div>
   )

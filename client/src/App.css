@@ -275,10 +275,13 @@ button{
   margin: 3px;
 }
 
-.ttt{
+tbody tr td{
+  /* padding-top: 40px !important; */
+}
+
+tr{
   user-select: none;
   position: relative;
-  /* background-color: red; */
 }
 
 .actions{
@@ -300,7 +303,7 @@ button{
   background-color: #f8be00;
   color: #fff;
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -308,7 +311,7 @@ button{
   background-color: #e7195a;
   color: #fff;
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 

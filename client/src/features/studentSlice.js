@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { StudentsData } from '../StudentData'
 
 export const getAllStudentAsync = createAsyncThunk (
     'records/getAllStudentAsync',
@@ -7,7 +6,6 @@ export const getAllStudentAsync = createAsyncThunk (
         const response = await fetch('http://localhost:5000/api/v1/student')
         if(response.ok){
             const data = await response.json()
-            // console.log(data)
             return { data }
         }
     }
@@ -19,7 +17,6 @@ export const getAStudentAsync = createAsyncThunk(
         const response = await fetch(`http://localhost:5000/api/v1/student/${payload}`)
         if(response.ok){
             const data = await response.json()
-            // console.log(data)
             return { data }
         }
     }
@@ -47,6 +44,29 @@ export const deleteStudentAsync = createAsyncThunk (
         console.log(payload)
         const response = await fetch(`http://localhost:5000/api/v1/student/${payload}`, {
             method: 'DELETE'
+        })
+        const data = await response.json()
+        console.log(data)
+        return { data }
+    }
+)
+
+export const updateStudentAsync = createAsyncThunk (
+    'records/updateStudentAsync',
+    async (payload) => {
+        const body = {
+            fName: payload.fName,
+            lName: payload.lName,
+            phoneNum: payload.phoneNum,
+            address: payload.address,
+            email: payload.email
+        }
+        const response = await fetch(`http://localhost:5000/api/v1/student/${payload.studentId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify(body)
         })
         const data = await response.json()
         console.log(data)
@@ -84,19 +104,17 @@ export const studentSlice = createSlice({
     },
     extraReducers: {
         [getAllStudentAsync.fulfilled]: (state, action) => {
-            // console.log(action.payload.data)
             state.allStudents = action.payload.data
         },
         [getAStudentAsync.fulfilled]: (state, action) => {
             state.singleStudent = action.payload.data
-            console.log(state.singleStudent)
         },
         [addStudentAsync.fulfilled]: (state, action) => {
             state.allStudents.push(action.payload.data)
         },
         [deleteStudentAsync.fulfilled]: (state, action) => {
             state.allStudents = state.allStudents.filter((student) => student._id !== action.payload.data.id)
-        }
+        },
     }
 })
 
