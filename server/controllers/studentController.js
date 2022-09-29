@@ -49,7 +49,9 @@ const updateAStudentDetails = async (req, res) => {
         const studentDetail = await StudentModel.findById(req.params.id)
         if(!studentDetail) return res.status(404).json({Msg: "Student details not found"})
 
-        const updatedStudentDetail = await StudentModel.findOneAndUpdate({_id: req.params.id}, {...req.body})
+        const updatedStudentDetail = await StudentModel.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        })
         res.status(200).json(updatedStudentDetail)
     } catch (error) {
         res.status(500).json({Msg: error.message})

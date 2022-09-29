@@ -62,7 +62,7 @@ export const updateStudentAsync = createAsyncThunk (
             email: payload.email
         }
         const response = await fetch(`http://localhost:5000/api/v1/student/${payload.studentId}`, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Content-Type':'application/json',
             },
@@ -115,6 +115,9 @@ export const studentSlice = createSlice({
         [deleteStudentAsync.fulfilled]: (state, action) => {
             state.allStudents = state.allStudents.filter((student) => student._id !== action.payload.data.id)
         },
+        [updateStudentAsync.fulfilled]: (state, action) => {
+            state.singleStudent = action.payload.data
+        }
     }
 })
 
