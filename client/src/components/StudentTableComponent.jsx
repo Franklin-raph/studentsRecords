@@ -7,6 +7,7 @@ const StudentTableComponent = ({ allStudents }) => {
 
   const dispatch = useDispatch()
   const [openToggleOptions, setOpenToggleOptions] = useState(false)
+  const [querySearch, setQuerySearch] = useState("")
 
   const toggleAction = (id) => {
     dispatch(getAStudentAsync(id))
@@ -15,6 +16,9 @@ const StudentTableComponent = ({ allStudents }) => {
 
   return (
     <>
+      <div className="search">
+        <i className="fa-solid fa-search"></i><input type="search" placeholder='Search for a student using first or last name...' id="" onChange={(e) => setQuerySearch(e.target.value.toLocaleLowerCase())} />
+      </div>
       <div className="container mt-5 table-responsive bg-glass shadow-4-strong rounded-6 px-0 tableContainer">
         <table className="table text-dark table-border table-hover">
           <thead>
@@ -27,7 +31,7 @@ const StudentTableComponent = ({ allStudents }) => {
             </tr>
           </thead>
           <tbody>
-            {allStudents && allStudents.map(student =>{
+            {allStudents && allStudents.filter(student => student.fName.toLowerCase().includes(querySearch) || student.lName.toLowerCase().includes(querySearch)).map(student =>{
               return(
             <tr className="text-dark" key={student._id}>
               <td>

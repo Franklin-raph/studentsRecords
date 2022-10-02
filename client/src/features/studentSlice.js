@@ -62,14 +62,14 @@ export const updateStudentAsync = createAsyncThunk (
             email: payload.email
         }
         const response = await fetch(`http://localhost:5000/api/v1/student/${payload.studentId}`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'Content-Type':'application/json',
             },
             body: JSON.stringify(body)
         })
         const data = await response.json()
-        console.log(data)
+        console.log(payload)
         return { data }
     }
 )
@@ -116,7 +116,21 @@ export const studentSlice = createSlice({
             state.allStudents = state.allStudents.filter((student) => student._id !== action.payload.data.id)
         },
         [updateStudentAsync.fulfilled]: (state, action) => {
-            state.singleStudent = action.payload.data
+            const allStudents = state.allStudents.filter((student) => {
+                student._id !== action.payload.data.id
+                console.log(action.payload.data)
+            })
+            console.log(...allStudents)
+            state.allStudents = [...allStudents, action.payload.data]
+            // // console.log(action.payload.data._id)
+            // const updatedIndex = state.allStudents.findIndex((student) => {
+            //     if(student._id === action.payload.data._id){
+            //         console.log("Equal")
+            //     }else{
+            //         console.log("Not equal")
+            //     }
+            //     // console.log(student._id)
+            // })
         }
     }
 })

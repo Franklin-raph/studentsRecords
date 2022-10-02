@@ -7,13 +7,11 @@ const TopNav = () => {
   return (
     <>
         {!isLeftNavOpen ? null
-          :<Leftnav />
+          :<Leftnav setIsLeftNavOpen={setIsLeftNavOpen}/>
         }
         <div className="navbar">
             <h3 style={{fontSize:'16px'}}>Technobs Digital Solutions</h3>
-            <div className="search">
-              <i className="fa-solid fa-search"></i><input type="search" placeholder='Search...' id="" />
-            </div>
+            
             {isLeftNavOpen ? <i className="fa-solid fa-xmark fa-xl" onClick={() => setIsLeftNavOpen(!isLeftNavOpen)}></i>
               :
               <i className="fa-solid fa-bars fa-xl" onClick={() => setIsLeftNavOpen(!isLeftNavOpen)} id="navClose"></i>

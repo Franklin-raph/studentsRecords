@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import AdminPasscomponent from '../components/AdminPasscomponent'
 
-const Leftnav = () => {
+const Leftnav = ({ setIsLeftNavOpen }) => {
 
     const [adminPassComponentModal, setAdminPassComponentModal] = useState(false);
 
@@ -15,7 +15,7 @@ const Leftnav = () => {
         <div className="navWrapper">
             <div className='sideNav'>
                 <img src="https://technobs.com/img/logo6.png" alt="" />
-                <button to='/' className='active'>
+                <button onClick={() => setIsLeftNavOpen(false)} className='active'>
                     <i className="fa-solid fa-gauge-high"></i>
                     <p>Dashboard</p>
                 </button>
