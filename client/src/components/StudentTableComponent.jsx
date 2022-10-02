@@ -15,7 +15,7 @@ const StudentTableComponent = ({ allStudents }) => {
   }
 
   return (
-    <>
+    <div className='dashBoard'>
       <div className="search">
         <i className="fa-solid fa-search"></i><input type="search" placeholder='Search for a student using first or last name...' id="" onChange={(e) => setQuerySearch(e.target.value.toLocaleLowerCase())} />
       </div>
@@ -61,7 +61,7 @@ const StudentTableComponent = ({ allStudents }) => {
         </table>
       </div>
       {openToggleOptions && <Options setOpenToggleOptions={setOpenToggleOptions}/>}
-    </>
+    </div>
   )
 }
 

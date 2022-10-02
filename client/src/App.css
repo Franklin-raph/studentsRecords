@@ -22,7 +22,7 @@ body{
 }
 
 .navbar{
-  padding: 50px 70px 10px;
+  padding: 30px 70px 16px;
 }
 
 .sideNav{
@@ -338,4 +338,19 @@ tr{
   height: 130px;
   width: 200px;
   z-index: 10;
+}
+
+@media screen and (max-width:576px) {
+  .dashBoard{
+    padding: 0 1rem;
+  }
+
+  .navbar{
+    padding: 30px 10px;
+  }
+
+  .footer{
+    flex-direction: column-reverse;
+  }
+
 }
