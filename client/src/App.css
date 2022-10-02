@@ -353,4 +353,8 @@ tr{
     flex-direction: column-reverse;
   }
 
+  .search input{
+    width: 280px;
+    margin:0 auto;
+  }
 }
