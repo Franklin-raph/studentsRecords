@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const { connectionMethod } = require('./config/db')
 const cors = require('cors')
-// const studentRoutes = requ
 
 const app = express()
 
