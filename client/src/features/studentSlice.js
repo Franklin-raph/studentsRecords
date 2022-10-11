@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const getAllStudentAsync = createAsyncThunk (
     'records/getAllStudentAsync',
     async () => {
-        const response = await fetch('https://student-records-server.onrender.com/api/v1/student')
+        const response = await fetch('https://studentsrecordserver-production.up.railway.app/api/v1/student')
         if(response.ok){
             const data = await response.json()
             return { data }
@@ -14,7 +14,7 @@ export const getAllStudentAsync = createAsyncThunk (
 export const getAStudentAsync = createAsyncThunk(
     'records/getAStudentAsync',
     async(payload) => {
-        const response = await fetch(`https://student-records-server.onrender.com/api/v1/student/${payload}`)
+        const response = await fetch(`https://studentsrecordserver-production.up.railway.app/api/v1/student/${payload}`)
         if(response.ok){
             const data = await response.json()
             return { data }
@@ -25,7 +25,7 @@ export const getAStudentAsync = createAsyncThunk(
 export const addStudentAsync = createAsyncThunk (
     'records/addStudentAsync',
     async (payload) => {
-        const response = await fetch('https://student-records-server.onrender.com/api/v1/student/register', {
+        const response = await fetch('https://studentsrecordserver-production.up.railway.app/api/v1/student/register', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
@@ -42,7 +42,7 @@ export const deleteStudentAsync = createAsyncThunk (
     'records/deleteStudentAsync',
     async(payload) => {
         console.log(payload)
-        const response = await fetch(`https://student-records-server.onrender.com/api/v1/student/${payload}`, {
+        const response = await fetch(`https://studentsrecordserver-production.up.railway.app/api/v1/student/${payload}`, {
             method: 'DELETE'
         })
         const data = await response.json()
@@ -61,7 +61,7 @@ export const updateStudentAsync = createAsyncThunk (
             address: payload.address,
             email: payload.email
         }
-        const response = await fetch(`https://student-records-server.onrender.com/api/v1/student/${payload.studentId}`, {
+        const response = await fetch(`https://studentsrecordserver-production.up.railway.app/api/v1/student/${payload.studentId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type':'application/json',

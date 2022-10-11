@@ -1,10 +1,14 @@
 import React,{ useState } from 'react'
 import AddStudentComponent from './AddStudentComponent'
+import Options from './Options';
+import dotenv from 'dotenv'
+// dotenv.config()
 
-const AdminPasscomponent = ({ setAdminPassComponentModal }) => {
+const AdminPasscomponent = ({ setAdminPassComponentModal, tableComp, leftNav }) => {
     const [passCode, setPassCode] = useState("")
     const [error, setError] = useState("")
     const [showAddStudentComponent, setShowAddStudentComponent] = useState(false)
+    const [openToggleOptions, setOpenToggleOptions] = useState(false)
 
     function handlePassCode(){ 
         if(!passCode){
@@ -18,7 +22,18 @@ const AdminPasscomponent = ({ setAdminPassComponentModal }) => {
                 setError("")
             },3500)
         }else{
-            setShowAddStudentComponent(true)
+            console.log("Table", tableComp)
+            console.log("Left nav", leftNav)
+            if(tableComp === true){
+                setOpenToggleOptions(true)
+                return
+            }
+            if(leftNav === true){
+                setShowAddStudentComponent(true)
+                // console.log(process.env.REACT_APP_ADMIN_PASS)
+                return
+
+            }
         }
     }
 
@@ -42,6 +57,10 @@ const AdminPasscomponent = ({ setAdminPassComponentModal }) => {
         {
             showAddStudentComponent && <AddStudentComponent setShowAddStudentComponent={setShowAddStudentComponent} 
             setAdminPassComponentModal={setAdminPassComponentModal}/>
+        }
+
+        {
+            openToggleOptions && <Options setOpenToggleOptions={setOpenToggleOptions}/>
         }
     </>
   )

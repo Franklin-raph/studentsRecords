@@ -10,7 +10,7 @@ const Leftnav = ({ setIsLeftNavOpen }) => {
   return (
     <>
         {!adminPassComponentModal ? null
-          :<AdminPasscomponent setAdminPassComponentModal={setAdminPassComponentModal}/>
+          :<AdminPasscomponent setAdminPassComponentModal={setAdminPassComponentModal} leftNav={true}/>
         }
         <div className="navWrapper">
             <div className='sideNav'>

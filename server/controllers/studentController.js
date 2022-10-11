@@ -20,6 +20,7 @@ const registerStudent = async (req, res) => {
 const viewAllStudents = async (req, res) => {
     try {
         const allstudents = await StudentModel.find().sort({ createdAt: -1 })
+        console.log(allstudents)
         res.status(200).json(allstudents)
 
     } catch (error) {
@@ -34,6 +35,7 @@ const viewASingleStudents = async (req, res) => {
         if(!mongoose.Types.ObjectId.isValid(req.params.id)) return res.status(404).json({Msg: "Student details not found"})
 
         const studentDetail = await StudentModel.findById(req.params.id)
+        console.log(studentDetail)
         if(!studentDetail) return res.status(404).json({Msg: "Student details not found"})
         res.status(200).json(studentDetail)
     } catch (error) {
@@ -52,6 +54,7 @@ const updateAStudentDetails = async (req, res) => {
         const updatedStudentDetail = await StudentModel.findByIdAndUpdate(req.params.id, req.body, {
             new: true
         })
+        console.log(updatedStudentDetail)
         res.status(200).json(updatedStudentDetail)
     } catch (error) {
         res.status(500).json({Msg: error.message})
@@ -64,6 +67,7 @@ const deleteAStudentDetails = async (req, res) => {
         if(!mongoose.Types.ObjectId.isValid(req.params.id)) return res.status(404).json({Msg: "Student details not found"})
         
         const studentDetail = await StudentModel.findOneAndDelete({_id: req.params.id})
+        console.log( req.params.id)
         if(!studentDetail) return res.status(404).json({Msg: "Student details not found"})
         res.status(200).json({id:req.params.id})
     } catch (error) {
