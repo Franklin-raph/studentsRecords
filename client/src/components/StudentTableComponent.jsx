@@ -34,6 +34,7 @@ const StudentTableComponent = ({ allStudents }) => {
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">Address</th>
+                <th scope='col'>Training Status</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -57,6 +58,9 @@ const StudentTableComponent = ({ allStudents }) => {
                 </td>
                 <td className='studentAddress'>
                   {student.address}
+                </td>
+                <td className='trainingStatus'>
+                  <p>Active</p>
                 </td>
                 <td style={{textAlign:'center', color:'#630470'}}>
                   <i className="fa-solid fa-sliders" style={{fontSize:'20px', cursor:'pointer'}} onClick={() => toggleAction(student._id)}></i>

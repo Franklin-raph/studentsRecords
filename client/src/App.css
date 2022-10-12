@@ -340,6 +340,15 @@ tr{
   z-index: 10;
 }
 
+.trainingStatus p{
+  background-color: #00cf5d;
+  /* padding: 1px; */
+  text-align: center;
+  color: #fff;
+  width: 70px;
+  border-radius: 5px;
+}
+
 @media screen and (max-width:1200px) {
   .studentAddress{
     overflow: hidden;
