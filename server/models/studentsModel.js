@@ -21,6 +21,16 @@ const StudentSchema = mongoose.Schema({
         type: "String",
         required: [true, "Please enter your phone number"],
     },
+    startDate: {
+        type: Date,
+        required: [true, "Please enter a starting date"]
+    },
+    endDate: {
+        type: Date,
+    },
+    trainingStatus: {
+        type: "String",
+    }
 }, {timestamps: true})
 
 

@@ -13,6 +13,7 @@ const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
     const [email, setEmail] = useState(singleStudent.email)
     const [phoneNum, setPhoneNum] = useState(singleStudent.phoneNum)
     const [address, setAddress] = useState(singleStudent.address)
+    const [startDate, setStartDate] = useState(singleStudent.startDate)
     const [error, setError] = useState("")
 
     function handleModalClose(){
@@ -37,6 +38,7 @@ const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
         <form className='addStudentModal' onSubmit={handleStudentFormSubmit}>
             <i className="fa-solid fa-xmark fa-xl" onClick={() => handleModalClose()} id="modalClose"></i>
             {error && <p style={{textAlign:'center', color:'red', fontWeight:'500'}}>{error}</p> }
+            {startDate}
             <div style={{display:'grid', placeItems:'center',}}>
                 <div className="formGroup">
                     <i className="fa-solid fa-user"></i>
@@ -57,6 +59,10 @@ const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
                 <div className="formGroup">
                     <i className="fa-solid fa-home"></i>
                     <input type="text" id="" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Ikeja, Lagos Nigeria" />
+                </div>
+                <div className="formGroup">
+                    <i className="fa-solid fa-calendar"></i>
+                    <input type="date" id="" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Starting Date" />
                 </div>
             </div>
             <input type="submit" className='addStudentSubmitBtn' value="Update"/>

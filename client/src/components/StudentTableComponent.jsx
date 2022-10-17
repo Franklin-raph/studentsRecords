@@ -60,7 +60,7 @@ const StudentTableComponent = ({ allStudents }) => {
                   {student.address}
                 </td>
                 <td className='trainingStatus'>
-                  <p>Active</p>
+                  <p>{student.trainingStatus}</p>
                 </td>
                 <td style={{textAlign:'center', color:'#630470'}}>
                   <i className="fa-solid fa-sliders" style={{fontSize:'20px', cursor:'pointer'}} onClick={() => toggleAction(student._id)}></i>

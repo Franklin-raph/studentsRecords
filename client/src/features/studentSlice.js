@@ -17,6 +17,7 @@ export const getAStudentAsync = createAsyncThunk(
         const response = await fetch(`https://studentsrecordserver-production.up.railway.app/api/v1/student/${payload}`)
         if(response.ok){
             const data = await response.json()
+            console.log(data)
             return { data }
         }
     }
@@ -33,7 +34,7 @@ export const addStudentAsync = createAsyncThunk (
             body: JSON.stringify(payload)
         })
         const data = await response.json()
-        console.log(response)
+        console.log(response.data)
         return { data }
     }
 )
@@ -59,7 +60,7 @@ export const updateStudentAsync = createAsyncThunk (
             lName: payload.lName,
             phoneNum: payload.phoneNum,
             address: payload.address,
-            email: payload.email
+            email: payload.email,
         }
         const response = await fetch(`https://studentsrecordserver-production.up.railway.app/api/v1/student/${payload.studentId}`, {
             method: 'PATCH',

@@ -13,6 +13,7 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassComponent
     const [phoneNum, setPhoneNum] = useState("")
     const [address, setAddress] = useState("")
     const [error, setError] = useState("")
+    const [startDate, setStartDate] = useState("")
 
     function handleModalClose(){
         setShowAddStudentComponent(false)
@@ -22,13 +23,13 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassComponent
 
     function handleStudentFormSubmit(e){
         e.preventDefault()
-        if(!fName || !email || !phoneNum || !address || !lName){
+        if(!fName || !email || !phoneNum || !address || !lName || !startDate){
             setError("Please Fill in all fields")
             setTimeout(() => {
                 setError("")
             },3500)
         }else{
-            dispatch(addStudentAsync({fName, email, phoneNum, address, lName}))
+            dispatch(addStudentAsync({fName, email, phoneNum, address, lName, startDate}))
             handleModalClose()
         }
     }
@@ -59,6 +60,10 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassComponent
                     <div className="formGroup">
                         <i className="fa-solid fa-home"></i>
                         <input type="text" id="" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Ikeja, Lagos Nigeria" />
+                    </div>
+                    <div className="formGroup">
+                        <i className="fa-solid fa-calendar"></i>
+                        <input type="date" id="" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Starting Date" />
                     </div>
                 </div>
                 <input type="submit" className='addStudentSubmitBtn' value="Submit"/>

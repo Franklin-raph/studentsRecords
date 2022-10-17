@@ -1,18 +1,35 @@
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
 const StudentModel = require('../models/studentsModel');
 
 // Add Student
 const registerStudent = async (req, res) => {
-    const { fName, lName, address, phoneNum, email } = req.body;
-    if(!fName || !lName || !address || !phoneNum || !email) return res.status(400).json({Msg: "Please fill in all fields"})
+    const { fName, lName, address, phoneNum, email, startDate } = req.body;
+    let trainingStatus;
+    if(!fName || !lName || !address || !phoneNum || !email || !startDate) return res.status(400).json({Msg: "Please fill in all fields"})
     try {
-        const existingEmail = await StudentModel.findOne({email:email})
-        if(existingEmail) return res.status(401).json({Msg: "Email already exists"})
+        const existingEmail = await StudentModel.findOne({email:email});
+        if(existingEmail) return res.status(401).json({Msg: "Email already exists"});
 
-        const studentDetails = await StudentModel.create({fName, lName, address, phoneNum, email})
-        res.status(201).json( studentDetails )
+        let dateCalculation = new Date(startDate);
+        let numberOfDaysToAdd = 93;
+        let result = dateCalculation.setDate(dateCalculation.getDate() + numberOfDaysToAdd);
+        endDate = new Date(result);
+
+        const todysDate = (new Date());
+
+        if(todysDate.getTime() >= endDate.getTime()){
+            trainingStatus = "Completed"
+        }
+
+        if(endDate > todysDate){
+            trainingStatus = "Active"
+        }
+
+        const studentDetails = await StudentModel.create({fName, lName, address, phoneNum, email, startDate, endDate, trainingStatus})
+
+        res.status(201).json(studentDetails);
     } catch (error) {
-        res.status(500).json({Msg: error.message})
+        res.status(500).json({Msg: error.message});
     }
 }
 
