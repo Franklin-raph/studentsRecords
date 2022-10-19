@@ -13,7 +13,7 @@ const AddStudentComponent = ({ setShowAddStudentComponent, setAdminPassComponent
     const [phoneNum, setPhoneNum] = useState("")
     const [address, setAddress] = useState("")
     const [error, setError] = useState("")
-    const [startDate, setStartDate] = useState("")
+    const [startDate, setStartDate] = useState()
 
     function handleModalClose(){
         setShowAddStudentComponent(false)

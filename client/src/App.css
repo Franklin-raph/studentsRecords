@@ -34,7 +34,7 @@ body{
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 180px;
   text-align: center;
   padding: 20px 0;
   /* margin-right: 50px; */
@@ -83,7 +83,7 @@ body{
   border-right: none;
 }
 
-.fa-user, .fa-envelope, .fa-phone, .fa-home{
+.fa-user, .fa-envelope, .fa-phone, .fa-home, .fa-calendar{
   background-color: #630470;
   color: #fff;
   padding: 9px 10px;
@@ -340,14 +340,40 @@ tr{
   z-index: 10;
 }
 
-.trainingStatus p{
-  background-color: #00cf5d;
-  /* padding: 1px; */
-  text-align: center;
-  color: #fff;
-  width: 70px;
-  border-radius: 5px;
+.keys{
+  position: fixed;
+  bottom: 20px;
+  z-index: 9999;
+  left: 30px;
 }
+
+.keys div{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.activeTrainingColor{
+  background-color: #00cf5d;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%
+}
+
+.completedTrainingColor{
+  background-color: #cf0034;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%
+}
+/* .completedState{
+  background-color: #00cf5d;
+  height: 25px;
+  width: 25px;
+  margin: 0 auto;
+  background-color: #cf0034;
+  border-radius: 50%
+} */
 
 @media screen and (max-width:1200px) {
   .studentAddress{
