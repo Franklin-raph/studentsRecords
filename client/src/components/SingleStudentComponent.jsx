@@ -38,7 +38,7 @@ const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
         <form className='addStudentModal' onSubmit={handleStudentFormSubmit}>
             <i className="fa-solid fa-xmark fa-xl" onClick={() => handleModalClose()} id="modalClose"></i>
             {error && <p style={{textAlign:'center', color:'red', fontWeight:'500'}}>{error}</p> }
-            {-istartDate}
+            {startDate}
             <div style={{display:'grid', placeItems:'center',}}>
                 <div className="formGroup">
                     <i className="fa-solid fa-user"></i>
