@@ -79,7 +79,8 @@ export const studentSlice = createSlice({
     name:'students',
     initialState: {
         allStudents: [],
-        singleStudent: {}
+        singleStudent: {},
+        isLoading: false
     },
     reducers:{
         // addStudent: (state, action) => {
@@ -104,17 +105,40 @@ export const studentSlice = createSlice({
         }
     },
     extraReducers: {
+        [getAllStudentAsync.pending]: (state, action) => {
+            state.isLoading = true
+        },
         [getAllStudentAsync.fulfilled]: (state, action) => {
             state.allStudents = action.payload.data
+            state.isLoading = false
+        },
+
+        [getAStudentAsync.pending]: (state, action) => {
+            // state.isLoading = true
         },
         [getAStudentAsync.fulfilled]: (state, action) => {
+            // state.isLoading = false
             state.singleStudent = action.payload.data
+        },
+
+        [addStudentAsync.pending]: (state, action) => {
+            state.isLoading = true
         },
         [addStudentAsync.fulfilled]: (state, action) => {
             state.allStudents.push(action.payload.data)
+            state.isLoading = false
+        },
+        
+        [deleteStudentAsync.pending]: (state, action) => {
+            state.isLoading = true
         },
         [deleteStudentAsync.fulfilled]: (state, action) => {
             state.allStudents = state.allStudents.filter((student) => student._id !== action.payload.data.id)
+            state.isLoading = false
+        },
+
+        [updateStudentAsync.pending]: (state, action) => {
+            state.isLoading = true
         },
         [updateStudentAsync.fulfilled]: (state, action) => {
             const allStudents = state.allStudents.filter((student) => {
@@ -123,6 +147,7 @@ export const studentSlice = createSlice({
             })
             console.log(...allStudents)
             state.allStudents = [...allStudents, action.payload.data]
+            state.isLoading = false
             // // console.log(action.payload.data._id)
             // const updatedIndex = state.allStudents.findIndex((student) => {
             //     if(student._id === action.payload.data._id){

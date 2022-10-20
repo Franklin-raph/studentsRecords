@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import AdminPasscomponent from '../components/AdminPasscomponent'
+import Logo from '../assets/images/logo6.png'
 
 const Leftnav = ({ setIsLeftNavOpen }) => {
 
@@ -14,7 +15,7 @@ const Leftnav = ({ setIsLeftNavOpen }) => {
         }
         <div className="navWrapper">
             <div className='sideNav'>
-                <img src="https://technobs.com/img/logo6.png" alt="" />
+                <img src={Logo} alt="" />
                 <button onClick={() => setIsLeftNavOpen(false)} className='active'>
                     <i className="fa-solid fa-gauge-high"></i>
                     <p>Dashboard</p>
