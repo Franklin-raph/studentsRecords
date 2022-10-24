@@ -27,7 +27,9 @@
             <h4>Tab C</h4>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium odio dolores eos quos alias eaque id sunt? Repudiandae mollitia veritatis commodi quibusdam, eligendi nostrum perspiciatis aspernatur nobis corrupti quidem obcaecati?</p>
         </div>
+
     </div>
+    
 
     <style>
         .buttons{
@@ -48,5 +50,22 @@
             display: block;
         }
     </style>
+
+    <input type="text" id="urlInp">
+    <input type="button" value="shorten" onclick="shortenIt()">
+    <div class="url">wd</div>
+
+    <script>
+        let urlInp = document.querySelector('#urlInp')
+        let url = document.querySelector('.url')
+        function shortenIt(){
+
+            // alert(urlInp.value)
+            let urlAttribute = `<a href="${urlInp.value}">hi</a>`
+            url.textContent = urlAttribute
+            console.log(urlAttribute)
+        }
+    </script>
+
 </body>
 </html>

@@ -33,13 +33,17 @@
 
 .loader-parent::before {
   content:'';
-  border:1px solid #630470; 
+  /* border:1px solid #630470;  */
+  background-color: #fff;
   border-radius:10px;
   position:absolute;
   top:-4px; 
   right:-4px; 
   bottom:-4px; 
   left:-4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .loader-parent .loading-bar { 
@@ -47,10 +51,11 @@
   border-radius:10px;
   top:0;
   right:100%;
-  bottom:0;
+  bottom:0px;
   left:0;
   background:#630470; 
   width:0;
+  height: 4px;
   animation: loader 2s linear infinite;
 }
 
@@ -70,7 +75,7 @@
   background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   z-index: 99;
   top: 50%;
   left: 50%;
@@ -107,7 +112,7 @@ html, body{
 }
 
 .navbar{
-  padding: 20px 70px 16px;
+  padding: 16px 70px;
   /* position: fixed; */
   top: 0;
   width: 100%;
@@ -118,7 +123,7 @@ html, body{
   left: 0;
   top: 0;
   z-index: 8;
-  height: 100vh;
+  height: 150vh;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -171,7 +176,7 @@ html, body{
   border-right: none;
 }
 
-.fa-user, .fa-envelope, .fa-phone, .fa-home, .fa-calendar{
+.fa-user, .fa-envelope, .fa-phone, .fa-home, .fa-calendar, .fa-clock{
   background-color: #630470;
   color: #fff;
   padding: 9px 10px;
@@ -219,7 +224,7 @@ html, body{
 .adminPassModal{
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 50%;
   transform: translate(-50%, -50%);
   background-color: #e4e4e4;
   padding: 20px;
@@ -235,12 +240,50 @@ html, body{
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #e4e4e4;
-  padding: 20px;
+  padding:40px 20px;
   border-radius: 10px;
   width: 350px;
   z-index: 10;
+}
+
+.ViewStudentsDetails{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e4e4e4;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  z-index: 12;
   padding-bottom: 80px;
   padding-top: 40px;
+}
+
+.detailsGroup p{
+  margin-bottom: 0;
+}
+
+.detailsGroup{
+  display: flex;
+  align-items: center;
+  height: 10px;
+}
+
+.detailsGroup .fa-solid{
+  color: #630470;
+  background-color: transparent;
+}
+
+#viewstudentModalClose{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 13;
+}
+
+.viewStudentsDetails{
+  color: #000;
 }
 
 .addStudentModal input[type="submit"]{
@@ -252,7 +295,6 @@ html, body{
   right: 10px;
   top: 10px;
 }
-
 
 .adminPassModal div{
   margin-top: 40px;
@@ -294,11 +336,16 @@ html, body{
   border-radius: 7px;
 }
 
+.viewAndUpdateButton{
+  display: flex;
+  justify-content: flex-end;
+}
+
 .addStudentSubmitBtn{
-  position: absolute;
+  /* position: absolute;
   right: 28px;
-  bottom: 16px;
-  background-color: #630470;
+  bottom: 16px; */
+  background-color: #630470 !important;
   color: #fff;
   padding: 5px 10px;
   border-radius: 7px;
@@ -309,7 +356,7 @@ html, body{
 .modalWrapper{
   background-color: rgba(0, 0, 0, 0.4);
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   z-index: 9;
   top: 50%;
   left: 50%;
@@ -331,7 +378,7 @@ html, body{
 .singleStudentComponent{
   background-color: rgba(0, 0, 0, 0.7);
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   z-index: 15;
   top: 50%;
   left: 50%;
@@ -403,7 +450,7 @@ tr{
 .optionsComponent{
   background-color: rgba(0, 0, 0, 0.7);
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   z-index: 9;
   top: 50%;
   left: 50%;
@@ -432,7 +479,7 @@ tr{
   position: fixed;
   bottom: 20px;
   z-index: 9999;
-  left: 30px;
+  left: 10px;
 }
 
 .keys div{
@@ -463,13 +510,18 @@ tr{
   border-radius: 50%
 } */
 
+tbody td{
+  padding-bottom: 0 !important;
+  height: 0 !important;
+}
+
 @media screen and (max-width:1200px) {
-  .studentAddress{
+  /* .studentAddress{
     overflow: hidden;
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-  }
+  } */
 }
 
 @media screen and (max-width:576px) {
@@ -477,17 +529,30 @@ tr{
     padding: 0 1rem;
   }
 
+  .tableContainer p, .tableContainer th{
+    font-size: 14px;
+  }
+
   .navbar{
-    padding: 30px 10px;
+    padding: 20px 10px;
   }
 
   .footer{
-    flex-direction: column-reverse;
+    padding: 8px 10px;
+  }
+
+  .footer p{
+    /* flex-direction: column-reverse; */
+    margin: 0;
+    font-size: 12px;
   }
 
   .search input{
     width: 280px;
-    margin:0 auto;
+  }
+
+  input::placeholder{
+    font-size: 12px;
   }
 
   .loader-parent { 

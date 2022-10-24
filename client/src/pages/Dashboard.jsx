@@ -19,7 +19,7 @@ const Dashboard = () => {
   return (
     <>
       {isLoading ? <LoadingSpinner /> : 
-      <div style={{position:'relative', marginTop:'6rem'}}>
+      <div style={{position:'relative', marginTop:'3rem'}}>
           {allStudents && <StudentTableComponent allStudents={allStudents}/> }
       </div>
       }

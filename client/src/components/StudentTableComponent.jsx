@@ -105,7 +105,7 @@ const StudentTableComponent = ({ allStudents }) => {
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
-                <th scope="col">Address</th>
+                <th scope="col">Gender</th>
                 <th scope='col'>Training Status</th>
                 <th scope="col">Actions</th>
               </tr>
@@ -133,10 +133,10 @@ const StudentTableComponent = ({ allStudents }) => {
                   <p>{student.phoneNum}</p>
                 </td>
                 <td className='studentAddress'>
-                  {student.address}
+                  <p>Male</p>
                 </td>
                 <td className='trainingStatus'>
-                  {console.log(student.trainingStatus.charAt(0))}
+                  {/* {console.log(student.trainingStatus.charAt(0))} */}
                   <p style={student.trainingStatus === "Completed" ? 
                     completedState : activeState}>
                     {student.trainingStatus.charAt(0)}

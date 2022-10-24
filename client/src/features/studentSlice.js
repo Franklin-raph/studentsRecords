@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+const LOCAL_BASE_URL = "http://localhost:5000/api/v1/student"
+const REMOTE_BASE_URL =  "https://studentsrecordserver-production.up.railway.app/api/v1/student"
 
 export const getAllStudentAsync = createAsyncThunk (
     'records/getAllStudentAsync',
     async () => {
-        const response = await fetch('https://studentsrecordserver-production.up.railway.app/api/v1/student')
+        const response = await fetch(LOCAL_BASE_URL)
         if(response.ok){
             const data = await response.json()
             return { data }
@@ -14,7 +16,7 @@ export const getAllStudentAsync = createAsyncThunk (
 export const getAStudentAsync = createAsyncThunk(
     'records/getAStudentAsync',
     async(payload) => {
-        const response = await fetch(`https://studentsrecordserver-production.up.railway.app/api/v1/student/${payload}`)
+        const response = await fetch(`${LOCAL_BASE_URL}/${payload}`)
         if(response.ok){
             const data = await response.json()
             console.log(data)
@@ -26,7 +28,7 @@ export const getAStudentAsync = createAsyncThunk(
 export const addStudentAsync = createAsyncThunk (
     'records/addStudentAsync',
     async (payload) => {
-        const response = await fetch('https://studentsrecordserver-production.up.railway.app/api/v1/student/register', {
+        const response = await fetch(`${LOCAL_BASE_URL}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
@@ -34,7 +36,7 @@ export const addStudentAsync = createAsyncThunk (
             body: JSON.stringify(payload)
         })
         const data = await response.json()
-        console.log(response.data)
+        console.log(data)
         return { data }
     }
 )
@@ -43,7 +45,7 @@ export const deleteStudentAsync = createAsyncThunk (
     'records/deleteStudentAsync',
     async(payload) => {
         console.log(payload)
-        const response = await fetch(`https://studentsrecordserver-production.up.railway.app/api/v1/student/${payload}`, {
+        const response = await fetch(`${LOCAL_BASE_URL}/${payload}`, {
             method: 'DELETE'
         })
         const data = await response.json()
