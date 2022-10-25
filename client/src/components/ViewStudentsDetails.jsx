@@ -24,8 +24,8 @@ const ViewStudentsDetails = ({setStudentDetails}) => {
           </div>
 
           <div className="detailsGroup">
-              <i className="fa-solid fa-github"></i>
-              <p>github</p>
+                <i class="fa-brands fa-github"></i>
+                <a href='https://github.com' target="_blank">github</a>
           </div>
 
           <div className="detailsGroup">
@@ -40,7 +40,7 @@ const ViewStudentsDetails = ({setStudentDetails}) => {
 
           <div className="detailsGroup">
               <i className="fa-solid fa-envelope"></i>
-              <p>{address}</p>
+              <p>{email}</p>
           </div>
 
           <div className="detailsGroup">

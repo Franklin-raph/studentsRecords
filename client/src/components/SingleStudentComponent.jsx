@@ -68,7 +68,7 @@ const SingleStudentComponent = ({ setOpenSingleStudentComponent }) => {
                 </div>
             </div>
             <div className='viewAndUpdateButton'>
-                <input type="button" value="View Details" onClick={() => setStudentDetails(!studentDetails)}/>
+                <input type="button" className='viewDetailsBtn' value="View Details" onClick={() => setStudentDetails(!studentDetails)}/>
                 <input type="submit" className='addStudentSubmitBtn' value="Update"/>
             </div>
         </form>
